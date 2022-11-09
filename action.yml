@@ -1,5 +1,5 @@
 # action.yml
-name: 'Slack notify'
+name: 'Slack notify via API token'
 description: 'Notify slack from github action'
 branding:
   icon: message-square
