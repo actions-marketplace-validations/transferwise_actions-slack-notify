@@ -25,8 +25,13 @@ runs:
   steps: 
     - id: install
       shell: bash
-      run: sudo apt-get install -y jq 
-      
+      run: |
+        if sudo; then
+          sudo apt-get install -y jq 
+        else
+          apt-get install -y jq
+        fi
+
     - id: notify
       shell: bash
       env:
@@ -49,7 +54,7 @@ runs:
         --data-raw "${JSON}" )
         SUCCESS=$( echo $RESULT | jq -r '.ok' )
         
-        echo "::set-output name=success::$(echo $SUCCESS)"
+        echo "success=$(echo $SUCCESS)" >> $GITHUB_OUTPUT
 
         if [ $SUCCESS != 'true' ]; then
           echo "Error when making request"
