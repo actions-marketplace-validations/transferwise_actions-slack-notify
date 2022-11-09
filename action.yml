@@ -1,6 +1,8 @@
 # action.yml
 name: 'Notify slack'
 description: 'Notify slack from github action'
+icon: message
+color: red
 
 inputs:
   text:
